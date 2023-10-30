@@ -52,7 +52,7 @@
   && document.getElementById('permit')
   && document.getElementsByClassName('textarea_input')[0]
   && document.getElementsByClassName('textarea_input')[0].value!=''){
-  	var c = document.getElementsByClassName('open_select')[1].innerText.includes('비공')
+  	var c = document.getElementsByClassName('open_select')[1].innerText.includes(' 공개')
   	document.getElementsByClassName('btn_open_set')[0].click()
   	document.getElementById('member').click()
     if(c){
