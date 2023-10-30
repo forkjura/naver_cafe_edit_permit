@@ -2,9 +2,14 @@
 
 1. [크롬확장](https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld) 설치
 2. 설치된 크롬확장 우클릭 > options 클릭
-3. Add new sites 클릭하여 아래 4개 스크립트 등록
-   - 게시물 리스트, url: https://cafe.naver.com/ca-fe/cafes/11262350/members/*
-   - ```Javascript
+3. Add new sites 클릭하여 본 글 최하단 4개 스크립트 등록
+4. 디매 홈 > 나의활동 > '내가쓴 게시글' 우클릭
+5. 가장 오래된 게시물 페이지(끝페이지)로 이동 후 '페이지 이동시마다 여기를 눌러요' 를 클릭하면 자동진행
+6. 끝나면 한페이지 이동 후 '페이지 이동시마다 여기를 눌러요' 클릭 반복
+
+
+- 스크립트1: 게시물 리스트, url: https://cafe.naver.com/ca-fe/cafes/11262350/members/*
+- ```Javascript
      function removeLink(event) {
           setTimeout(function() {
               link.remove(); 
@@ -30,3 +35,56 @@
       }
       chk()
      ```
+- 스크립트2: 수정완료창, url: https://cafe.naver.com/dieselmania/4
+- ```Javascript
+  setTimeout(function() {
+	   window.close()
+   }, 500);  
+  ```
+- 스크립트3: 수정창, url: https://cafe.naver.com/ca-fe/cafes/11262350/articles/*
+- ```Javascript
+  function chk(){
+	var btn = document.getElementsByClassName('BaseButton BaseButton--skinGreen size_default')
+	if (btn[0]
+	&& document.getElementsByClassName('btn_open_set')[0]
+	&& document.getElementById('member')
+	&& document.getElementById('permit')
+	&& document.getElementsByClassName('textarea_input')[0]
+	&& document.getElementsByClassName('textarea_input')[0].value!=''){
+		document.getElementsByClassName('btn_open_set')[0].click()
+		document.getElementById('member').click()
+      if(document.getElementById('permit').value == 'true'){
+         document.getElementById('permit').click()
+      }
+      window.addEventListener("beforeunload", function (event) {
+          window.close()
+          closeWindow();
+      });
+      setTimeout(function() {
+         document.getElementsByClassName('BaseButton BaseButton--skinGreen size_default')[0].click()
+      }, 500);
+         
+      }else{
+         setTimeout(chk, 200);
+      }
+   }
+   chk()
+  ```
+- 스크립트4: 게시물창, url: https://cafe.naver.com/dieselmania?iframe_url_utf8=%2FArticleRead.nhn*
+- ```Javacript
+  function chk(){
+	if(
+		document.getElementById('cafe_main')
+		&& document.getElementById('cafe_main').contentWindow.document
+		&& document.getElementById('cafe_main').contentWindow.document.getElementsByClassName("left_area")[0]
+		&& document.getElementById('cafe_main').contentWindow.document.getElementsByClassName("left_area")[0].children[0]
+		){
+			document.getElementById('cafe_main').contentWindow.document.getElementsByClassName("left_area")[0].children[0].click()
+			setTimeout(function() {window.close()}, 500);
+		}
+	else{
+		setTimeout(chk,300)
+	}
+   }
+   chk()
+  ```
