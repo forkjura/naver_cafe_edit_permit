@@ -10,30 +10,30 @@
 
 - 스크립트1: 게시물 리스트, url: https://cafe.naver.com/ca-fe/cafes/11262350/members/*
 - ```Javascript
-     function removeLink(event) {
-          setTimeout(function() {
-              link.remove(); 
-          }, 500);
-      }
-      
-      function chk(){
-      	if(document.getElementsByClassName('profile_info_area')[0]){
-      		var button = document.createElement('button');
-      		button.textContent = '페이지 이동시마다 여기를 눌러요';
-      		button.style.color = 'blue';
-      		document.getElementsByClassName('profile_info_area')[0].appendChild(button);
-      		// 버튼 클릭 이벤트 핸들러를 연결합니다.
-      		button.addEventListener('click', function () {
-      		    var articleLinks = document.querySelectorAll('a.article');
-      		    for (var i = 0; i < articleLinks.length; i++) {
-      		        articleLinks[i].addEventListener('click', removeLink);
-      		    }
-      		});
-      	}else{
-      		setTimeout(chk, 200);
-      	}
-      }
-      chk()
+        function aClick(){
+   	if(document.getElementsByClassName('article')[0]){
+   		document.getElementsByClassName('article')[0].click()
+   		setTimeout(function() {
+   			document.getElementsByClassName('article')[0].remove()
+   		}, 300);
+   	}
+   }
+    
+    function chk(){
+    	if(document.getElementsByClassName('profile_info_area')[0]){
+    		var button = document.createElement('button');
+    		button.textContent = '페이지 이동시마다 여기를 눌러요';
+    		button.style.color = 'blue';
+    		document.getElementsByClassName('profile_info_area')[0].appendChild(button);
+    		// 버튼 클릭 이벤트 핸들러를 연결합니다.
+    		button.addEventListener('click', function () {
+    		    aClick()
+    		});
+    	}else{
+    		setTimeout(chk, 200);
+    	}
+    }
+    chk()
      ```
 - 스크립트2: 수정완료창, url: https://cafe.naver.com/dieselmania/4
 - ```Javascript
