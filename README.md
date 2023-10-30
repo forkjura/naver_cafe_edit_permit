@@ -10,12 +10,13 @@
 
 - 스크립트1: 게시물 리스트, url: https://cafe.naver.com/ca-fe/cafes/11262350/members/*
 - ```Javascript
-        function aClick(){
+     function aClick(){
    	if(document.getElementsByClassName('article')[0]){
    		document.getElementsByClassName('article')[0].click()
    		setTimeout(function() {
    			document.getElementsByClassName('article')[0].remove()
    		}, 300);
+   		setTimeout(aClick, 4500)
    	}
    }
     
@@ -34,7 +35,7 @@
     	}
     }
     chk()
-     ```
+  ```
 - 스크립트2: 수정완료창, url: https://cafe.naver.com/dieselmania/4
 - ```Javascript
   setTimeout(function() {
