@@ -44,31 +44,32 @@
 - 스크립트3: 수정창, url: https://cafe.naver.com/ca-fe/cafes/11262350/articles/*
 - ```Javascript
   function chk(){
-	var btn = document.getElementsByClassName('BaseButton BaseButton--skinGreen size_default')
-	if (btn[0]
-	&& document.getElementsByClassName('btn_open_set')[0]
-	&& document.getElementById('member')
-	&& document.getElementById('permit')
-	&& document.getElementsByClassName('textarea_input')[0]
-	&& document.getElementsByClassName('textarea_input')[0].value!=''){
-		document.getElementsByClassName('btn_open_set')[0].click()
-		document.getElementById('member').click()
-      if(document.getElementById('permit').value == 'true'){
-         document.getElementById('permit').click()
-      }
-      window.addEventListener("beforeunload", function (event) {
-          window.close()
-          closeWindow();
-      });
-      setTimeout(function() {
-         document.getElementsByClassName('BaseButton BaseButton--skinGreen size_default')[0].click()
-      }, 500);
-         
-      }else{
-         setTimeout(chk, 200);
-      }
-   }
-   chk()
+  var btn = document.getElementsByClassName('BaseButton BaseButton--skinGreen size_default')
+  if (btn[0]
+  && document.getElementsByClassName('btn_open_set')[0]
+  && document.getElementById('member')
+  && document.getElementById('permit')
+  && document.getElementsByClassName('textarea_input')[0]
+  && document.getElementsByClassName('textarea_input')[0].value!=''){
+  	var c = document.getElementsByClassName('open_select')[1].innerText.includes('비공')
+  	document.getElementsByClassName('btn_open_set')[0].click()
+  	document.getElementById('member').click()
+    if(c){
+       document.getElementById('permit').click()
+    }
+    window.addEventListener("beforeunload", function (event) {
+        window.close()
+        closeWindow();
+    });
+    setTimeout(function() {
+       document.getElementsByClassName('BaseButton BaseButton--skinGreen size_default')[0].click()
+    }, 500);
+       
+    }else{
+       setTimeout(chk, 200);
+    }
+ 	}
+ 	chk()
   ```
 - 스크립트4: 게시물창, url: https://cafe.naver.com/dieselmania?iframe_url_utf8=%2FArticleRead.nhn*
 - ```Javacript
